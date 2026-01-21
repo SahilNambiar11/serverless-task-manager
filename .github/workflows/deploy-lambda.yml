@@ -1,0 +1,39 @@
+name: Lambda CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install boto3
+
+      - name: Run tests
+        run: |
+          source venv/bin/activate
+          python tests/test_tasks.py
+
+      - name: Deploy to Lambda
+        uses: appleboy/lambda-action@v0.3.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: us-east-2
+          function_name: hello-lambda
+          zip_file: functions.zip
