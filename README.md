@@ -87,14 +87,14 @@ curl -X POST https://<api-url>/tasks \
 curl https://<api-url>/tasks
 ```
 
-**Update Tasks**
+**Update Task**
 ```
 curl -X PUT https://<api-url>/tasks \
   -H "Content-Type: application/json" \
   -d '{"task_id": "<TASK_ID>", "completed": true}'
 ```
 
-**Delete All Tasks**
+**Delete A Tasks**
 ```
 curl -X DELETE https://<api-url>/tasks?task_id=<TASK_ID>
 ```
