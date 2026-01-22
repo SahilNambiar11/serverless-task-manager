@@ -76,29 +76,30 @@ Benefits:
 ## 📦 API Endpoints
 
 **Create a Task**
-```bash
+```
 curl -X POST https://<api-url>/tasks \
   -H "Content-Type: application/json" \
   -d '{"title": "My first task"}'
-Get All Tasks
+```
 
-bash
-Copy code
+**Get All Tasks**
+```
 curl https://<api-url>/tasks
-Update a Task
+```
 
-bash
-Copy code
+**Update Tasks**
+```
 curl -X PUT https://<api-url>/tasks \
   -H "Content-Type: application/json" \
   -d '{"task_id": "<TASK_ID>", "completed": true}'
-Delete a Task
+```
 
-bash
-Copy code
+**Delete All Tasks**
+```
 curl -X DELETE https://<api-url>/tasks?task_id=<TASK_ID>
-
+```
 🔐 Security
+
 Lambda executes using an IAM role with least-privilege permissions
 
 No credentials are hardcoded
@@ -108,10 +109,12 @@ AWS credentials are securely stored as GitHub Secrets
 Public API access controlled at the API Gateway level
 
 🧪 Local Testing
+
 Core logic can be tested locally by invoking the Lambda handler directly with simulated API Gateway events.
 This enables fast iteration before deploying to the cloud.
 
 📈 Future Improvements
+
 Add authentication (Cognito / JWT)
 
 Pagination for large task lists
@@ -123,6 +126,7 @@ Infrastructure as Code (Terraform or AWS CDK)
 Rate limiting and monitoring enhancements
 
 📌 What This Project Demonstrates
+
 Cloud-native backend design
 
 Serverless application development
@@ -136,5 +140,6 @@ CI/CD automation
 Production-style deployment workflows
 
 🧑‍💻 Author
+
 Sahil Nambiar
 Computer Science @ Purdue University
