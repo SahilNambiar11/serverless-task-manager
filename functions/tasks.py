@@ -7,6 +7,8 @@ from boto3.dynamodb.conditions import Key
 dynamodb = boto3.resource("dynamodb", region_name="us-east-2")
 table = dynamodb.Table("Tasks")
 
+print("CI/CD test: Lambda deployed!")
+
 
 def lambda_handler(event, context):
     """
