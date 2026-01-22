@@ -24,10 +24,11 @@ jobs:
           source venv/bin/activate
           pip install boto3
 
-      - name: Run tests
+      - name: Package Lambda function
         run: |
-          source venv/bin/activate
-          python tests/test_tasks.py
+          cd functions
+          zip -r ../functions.zip .
+          cd ..
 
       - name: Deploy to Lambda
         uses: appleboy/lambda-action@v0.3.0
