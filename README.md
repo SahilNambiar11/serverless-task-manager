@@ -76,7 +76,6 @@ Benefits:
 ## 📦 API Endpoints
 
 **Create a Task**
-
 ```bash
 curl -X POST https://<api-url>/tasks \
   -H "Content-Type: application/json" \
@@ -98,6 +97,7 @@ Delete a Task
 bash
 Copy code
 curl -X DELETE https://<api-url>/tasks?task_id=<TASK_ID>
+
 🔐 Security
 Lambda executes using an IAM role with least-privilege permissions
 
