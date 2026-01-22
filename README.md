@@ -98,7 +98,7 @@ curl -X PUT https://<api-url>/tasks \
 ```
 curl -X DELETE https://<api-url>/tasks?task_id=<TASK_ID>
 ```
-🔐 Security
+## 🔐 Security
 
 Lambda executes using an IAM role with least-privilege permissions
 
@@ -108,12 +108,12 @@ AWS credentials are securely stored as GitHub Secrets
 
 Public API access controlled at the API Gateway level
 
-🧪 Local Testing
+## 🧪 Local Testing
 
 Core logic can be tested locally by invoking the Lambda handler directly with simulated API Gateway events.
 This enables fast iteration before deploying to the cloud.
 
-📈 Future Improvements
+## 📈 Future Improvements
 
 Add authentication (Cognito / JWT)
 
@@ -125,7 +125,7 @@ Infrastructure as Code (Terraform or AWS CDK)
 
 Rate limiting and monitoring enhancements
 
-📌 What This Project Demonstrates
+## 📌 What This Project Demonstrates
 
 Cloud-native backend design
 
@@ -139,7 +139,7 @@ CI/CD automation
 
 Production-style deployment workflows
 
-🧑‍💻 Author
+## 🧑‍💻 Author
 
 Sahil Nambiar
 Computer Science @ Purdue University
