@@ -1,6 +1,7 @@
 import json
 import uuid
 import boto3
+import time
 from boto3.dynamodb.conditions import Key
 
 # Connect to DynamoDB table
@@ -15,6 +16,7 @@ def lambda_handler(event, context):
     Lambda function that handles task management.
     Supports POST (create), GET (read), PUT (update), DELETE (delete).
     """
+    start_time = time.time()
 
     method = event.get("httpMethod", "POST")  # default POST if not specified
 
@@ -94,3 +96,6 @@ def lambda_handler(event, context):
     # ---------------- INVALID METHOD ----------------
     else:
         return {"statusCode": 405, "body": json.dumps({"error": f"Method {method} not allowed"})}
+    
+    end_time = time.time()
+    print(f"Execution time: {(end_time - start_time) * 1000:.2f} ms")
