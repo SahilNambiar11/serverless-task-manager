@@ -31,10 +31,11 @@ jobs:
           cd ..
 
       - name: Deploy to Lambda
-        uses: appleboy/lambda-action@v0.3.0
+        uses: appleboy/lambda-action@v0.2.0
         with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: us-east-2
-          function_name: hello-lambda
-          zip_file: functions.zip
+            aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            region: us-east-2
+            function_name: hello-lambda
+            zip_file: functions.zip
+
