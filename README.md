@@ -1,103 +1,104 @@
-Serverless Task Management API
+# Serverless Task Management API
 
-A cloud-native, serverless REST API for managing tasks, built using AWS Lambda, API Gateway, DynamoDB, and GitHub Actions CI/CD.
+A cloud-native, serverless REST API for managing tasks, built using **AWS Lambda**, **API Gateway**, **DynamoDB**, and **GitHub Actions CI/CD**.
 
 This project demonstrates modern backend and cloud engineering fundamentals, including serverless architecture, secure IAM usage, and automated deployment pipelines.
 
-🚀 Features
+---
 
-Create, read, update, and delete tasks (CRUD)
+## 🚀 Features
 
-Fully serverless backend (no servers to manage)
+- Create, read, update, and delete tasks (CRUD)  
+- Fully serverless backend (no servers to manage)  
+- Stateless API design  
+- Persistent storage using DynamoDB  
+- Automated CI/CD pipeline with GitHub Actions  
+- Deployed and accessible via AWS API Gateway  
 
-Stateless API design
+---
 
-Persistent storage using DynamoDB
+## 🏗 Architecture
 
-Automated CI/CD pipeline with GitHub Actions
-
-Deployed and accessible via AWS API Gateway
-
-🏗 Architecture
 Client (curl / Postman)
-        |
-        | HTTP (REST)
-        v
+|
+| HTTP (REST)
+v
 API Gateway
-        |
-        v
+|
+v
 AWS Lambda (Python)
-        |
-        | IAM Role (least privilege)
-        v
+|
+| IAM Role (least privilege)
+v
 DynamoDB (Tasks table)
 
-🧠 Key Design Decisions
-Why Serverless (Lambda)?
+yaml
+Copy code
 
-No server management or scaling concerns
+---
 
-Pay only for execution time
+## 🧠 Key Design Decisions
 
-Ideal for event-driven APIs and microservices
+### Why Serverless (Lambda)?
+- No server management or scaling concerns  
+- Pay only for execution time  
+- Ideal for event-driven APIs and microservices  
 
-Why DynamoDB?
+### Why DynamoDB?
+- Fully managed NoSQL database  
+- Scales automatically  
+- Low latency for key-value access  
+- Simple data model fits task storage well  
 
-Fully managed NoSQL database
+### Why API Gateway?
+- Native AWS integration with Lambda  
+- Handles routing, HTTP methods, and request lifecycle  
+- Public REST endpoint without custom servers  
 
-Scales automatically
+---
 
-Low latency for key-value access
+## 🔄 CI/CD Pipeline
 
-Simple data model fits task storage well
+This project uses **GitHub Actions** to automatically deploy code on every push to `main`.
 
-Why API Gateway?
+Pipeline steps:  
+1. Checkout repository  
+2. Package Lambda source code into a ZIP file  
+3. Deploy ZIP to AWS Lambda using secure credentials  
 
-Native AWS integration with Lambda
+Benefits:  
+- No manual deployments  
+- Consistent production builds  
+- Faster iteration and safer changes  
 
-Handles routing, HTTP methods, and request lifecycle
+---
 
-Public REST endpoint without custom servers
+## 📦 API Endpoints
 
-🔄 CI/CD Pipeline
+**Create a Task**
 
-This project uses GitHub Actions to automatically deploy code on every push to main.
-
-Pipeline steps:
-
-Checkout repository
-
-Package Lambda source code into a ZIP file
-
-Deploy ZIP to AWS Lambda using secure credentials
-
-This ensures:
-
-No manual deployments
-
-Consistent production builds
-
-Faster iteration and safer changes
-
-📦 API Endpoints
-Create a Task
+```bash
 curl -X POST https://<api-url>/tasks \
   -H "Content-Type: application/json" \
   -d '{"title": "My first task"}'
-
 Get All Tasks
-curl https://<api-url>/tasks
 
+bash
+Copy code
+curl https://<api-url>/tasks
 Update a Task
+
+bash
+Copy code
 curl -X PUT https://<api-url>/tasks \
   -H "Content-Type: application/json" \
   -d '{"task_id": "<TASK_ID>", "completed": true}'
-
 Delete a Task
+
+bash
+Copy code
 curl -X DELETE https://<api-url>/tasks?task_id=<TASK_ID>
-
 🔐 Security
-
 Lambda executes using an IAM role with least-privilege permissions
 
 No credentials are hardcoded
@@ -107,13 +108,10 @@ AWS credentials are securely stored as GitHub Secrets
 Public API access controlled at the API Gateway level
 
 🧪 Local Testing
-
 Core logic can be tested locally by invoking the Lambda handler directly with simulated API Gateway events.
-
 This enables fast iteration before deploying to the cloud.
 
 📈 Future Improvements
-
 Add authentication (Cognito / JWT)
 
 Pagination for large task lists
@@ -125,7 +123,6 @@ Infrastructure as Code (Terraform or AWS CDK)
 Rate limiting and monitoring enhancements
 
 📌 What This Project Demonstrates
-
 Cloud-native backend design
 
 Serverless application development
@@ -139,6 +136,5 @@ CI/CD automation
 Production-style deployment workflows
 
 🧑‍💻 Author
-
 Sahil Nambiar
 Computer Science @ Purdue University
